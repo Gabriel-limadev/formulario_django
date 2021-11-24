@@ -2,8 +2,12 @@
 {% block title %}Consulta{% endblock %}
 
 {% block content %}
+    <p>Data de pesquisa: {{ form.data_pesquisa.value }}</p>
     <p>Sua origem é: {{ form.origem.value }}</p>
     <p>Seu destino é: {{ form.destino.value }}</p>
     <p>Sua data de ida é: {{ form.data_ida.value }}</p>
     <p>Sua data de volta é: {{ form.data_volta.value }}</p>
+    <p>Sua classe de vôo é: {{ form.classe_viagem.value }}</p>
+    <p>Informações extras: {{ form.informacoes.value }}</p>
+    <p>Seu email é: {{ pessoa_form.email.value }}</p>
 {% endblock %}

@@ -21,7 +21,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'tempus_dominus',
     'passagens',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -29,6 +28,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Apps(bibliotecas) instaladas:
+    'widget_tweaks',
+    'tempus_dominus',
 ]
 
 MIDDLEWARE = [
@@ -118,4 +120,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Configurando tempus_dominus
 TEMPUS_DOMINUS_LOCALIZE = True
-

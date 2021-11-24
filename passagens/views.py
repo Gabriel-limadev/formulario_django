@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from passagens.forms import PassagemForms
+from passagens.forms import PassagemForms, PessoaForms
+
 
 def index(request):
     """
@@ -7,10 +8,13 @@ def index(request):
     """
     # Passando por contexto os dados vindo do forms.py para o formulário ser renderizado
     form = PassagemForms()
+    pessoa_form = PessoaForms()
     context = {
-        'form' : form
+        'form': form,
+        'pessoa_form': pessoa_form
     }
     return render(request, 'index.html', context)
+
 
 def revisao_consulta(request):
     """
@@ -19,8 +23,13 @@ def revisao_consulta(request):
 
     if request.method == "POST":
         form = PassagemForms(request.POST)
-        # Passando por contexto os dados resgatados do formulário da página index
-        context = {
-            'form' : form
-        }   
-    return render(request, 'minha_consulta.html', context)
+        pessoa_form = PessoaForms(request.POST)
+
+        # Verificando se o formulário está validado.
+        if form.is_valid():
+            # Passando por contexto os dados resgatados do formulário da página index
+            context = {'form': form, 'pessoa_form': pessoa_form}
+            return render(request, 'minha_consulta.html', context)
+        else:
+            context = {'form': form, 'pessoa_form': pessoa_form}
+            return render(request, 'index.html', context)
